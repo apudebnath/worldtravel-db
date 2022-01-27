@@ -69,7 +69,7 @@ async function run(){
           const posts = await cursor.toArray();
           res.json(posts);
       })
-      // search and get product by id
+      // search and get post by id
         app.get('/posts/:id', async(req, res) => {
           const id = req.params.id;
           const query = {_id: ObjectId(id)};
@@ -89,21 +89,14 @@ async function run(){
         res.json(result);
         console.log(result)
       })
-    // Delete order
+    // Delete post
       app.delete('/deletePost/:id', async(req, res) => {
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
         const result = await postsCollection.deleteOne(query);
         res.json(result);
       })
-/*     // Order data find by query and send db to ui
-      app.get('/Orders', async(req, res) => {
-        const email = req.query.email;
-        const query = {email: email};
-        const cursor = ordersCollection.find(query);
-        const result = await cursor.toArray();
-        res.json(result);
-      }) */
+
     //Users review ui to database
       app.post('/reviews', async(req, res) => {
         const review = req.body;
